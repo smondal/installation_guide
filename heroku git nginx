@@ -6,6 +6,26 @@ heroku create sandiphero1
 cd hellow_world    # go to application folder
 git push heroku master
 
+#after every changes first commit it
+  git commit -m "rake use" .
+  git push heroku master
+
+
+
+note
+------------
+
+git clone -o heroku git@heroku.com:sandiphero1.git  #clone repository to your local computer
+heroku login                                        # create an credential to your local computer 
+heroku logout                                       #remove credential
+heroku info                                         #information on repository
+heroku sharing add devid36@gmail.com                #invite to other user for collaborating your 
+                                                    application
+heroku logs
+
+
+
+
 
 Capistrano Setup
 ============================================================
