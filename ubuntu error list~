@@ -1,0 +1,8 @@
+Q. gem install mysql error
+A.sudo apt-get install libmysql-ruby libmysqlclient-dev libmysqlclient12-dev
+  necessary file required to load first
+ 
+Q.git clone the requested url return error 403
+A. switch to git:// protocol 
+
+

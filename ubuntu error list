@@ -1,0 +1,11 @@
+Q. gem install mysql error
+A.sudo apt-get install libmysql-ruby libmysqlclient-dev libmysqlclient12-dev
+  necessary file required to load first
+ 
+Q.git clone the requested url return error 403
+A. switch to git:// protocol 
+
+Q. WARNING: Unable to verify SSL certificate for api.heroku.com
+To disable SSL verification, run with HEROKU_SSL_VERIFY=disable
+A. install <2.0.0 heroku
+
