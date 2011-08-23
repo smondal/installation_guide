@@ -12,3 +12,9 @@ A. install <2.0.0 heroku
 Q. uninitialize constant Rake::DSl
 A. remove rake 0.9.2
    use 0.8.7 like (gem "rake","0.8.7")
+
+Q. fatal: Not a git repository (or any of the parent directories): .git
+A. git init
+
+Q. The remote end hung up unexpectedly
+Q. git commit -m "initial inport" .
