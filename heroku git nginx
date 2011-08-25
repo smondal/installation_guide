@@ -4,11 +4,12 @@ rvm gem install heroku  -v=1.20.1
 heroku keys:add
 cd hellow_world    # go to application folder
 git init
-git add
+git add .
 git commit -m "initial import" .
 heroku create sandiphero1
 git push heroku master
 heroku rake db:migrate
+
 
 #after every changes first commit it
   git commit -m "rake use" .
@@ -100,7 +101,7 @@ git push origin master
 
 note 
 git remote rm origin
-
+git rm Filename
 
 
 Nginx setup
