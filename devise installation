@@ -1,0 +1,66 @@
+gem install devise
+rails generate devise:install
+rails generate devise User
+
+In your routes file
+============================================================================================
+    root :to => "home#index"
+
+In your development environment file 
+===========================================================================================
+   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+In your user model, I have added first_name attr_accessible 
+====================================================================================
+   class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :first_name, :email, :password, :password_confirmation, :remember_me
+end
+
+
+In migration file add column
+======================================================================================================
+  class DeviseCreateUsers < ActiveRecord::Migration
+  def self.up
+    create_table(:users) do |t|
+      t.database_authenticatable :null => false
+      t.recoverable
+      t.rememberable
+      t.trackable
+      t.column :first_name, :string
+      # t.encryptable
+      # t.confirmable
+      # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
+      # t.token_authenticatable
+
+
+      t.timestamps
+    end
+
+    add_index :users, :email,                :unique => true
+    add_index :users, :reset_password_token, :unique => true
+    # add_index :users, :confirmation_token,   :unique => true
+    # add_index :users, :unlock_token,         :unique => true
+    # add_index :users, :authentication_token, :unique => true
+  end
+
+  def self.down
+    drop_table :users
+  end
+end
+
+**rails generate devise:views users
+  It will copy view file to your view folder.
+
+inside “config/initializers/devise.rb”
+**  config.scoped_views = true” 
+
+
+
+
+

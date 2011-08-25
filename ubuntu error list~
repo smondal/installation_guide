@@ -17,13 +17,4 @@ Q. fatal: Not a git repository (or any of the parent directories): .git
 A. git init
 
 Q. The remote end hung up unexpectedly
-A. git commit -m "initial inport" .
-
-Q.ruby-1.9.2-p290 :001 > require 'mylibrary'
-LoadError: no such file to load -- mylibrary
-	from /home/user/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
-	from /home/user/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
-	from (irb):1
-	from /home/user/.rvm/rubies/ruby-1.9.2-p290/bin/irb:16:in `<main>'
-
-A. I have changed the ruby file to 1.8.7
+Q. git commit -m "initial inport" .
