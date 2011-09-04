@@ -1,0 +1,2 @@
+Q. what is autoload?
+A. autoload works in a similar way to require, but it only loads the file when it is used first time.

@@ -11,9 +11,3 @@ A. In Home folder, store as a hidden file.
 
 Q. Remove installation file from ubuntu
 A. dpkg -r file_name
-
-Q.How to show load path
-A. $PATH
-
-Q. How to set up path in ubuntu 
-A. export PATH="/home/user/github:$PATH"

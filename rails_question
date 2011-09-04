@@ -1,0 +1,12 @@
+Q. Show the application generator
+A. rails generate
+
+Q. How to use rails helper methods
+A.   
+   1. ActionController::Base.helpers.number_to_currency(12)
+   2. ActionView::Base.new.number_to_currency(12)
+   3. class A
+        include ActionView::Helpers
+      end
+
+      A.new.number_to_currency(12)

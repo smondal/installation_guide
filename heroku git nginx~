@@ -106,8 +106,6 @@ git rm Filename
 
 Nginx setup
 ===========================================================
-rvm gem install passenger
-passenger-install-nginx-module
 sudo apt-get install libcurl4-openssl-dev
 rvm 1.9.2 --passenger
 rvm 1.9.2
