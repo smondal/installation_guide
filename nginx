@@ -1,0 +1,145 @@
+Nginx setup
+===========================================================
+rvm gem install passenger
+passenger-install-nginx-module
+sudo apt-get install libcurl4-openssl-dev
+rvm 1.9.2 --passenger
+rvm 1.9.2
+gem install passenger         
+rvmsudo passenger-install-nginx-module
+sudo -R 777 /opt/nginx/sbin/nginx               # give the permission to nginx folde
+sudo chmod -R 777 /opt/nginx/conf/nginx.conf    # give the conf file permission
+tail -f /opt/nginx/logs/error.log               # show the log file
+pkill nginx                                     # kill the nginx process
+/opt/nginx/sbin/nginx                           # start enginx
+vi /opt/nginx/conf/nginx.conf                   #
+        
+#user  nobody;
+#user www;
+worker_processes  1;
+
+error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+	    
+pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    passenger_root /home/user/.rvm/gems/ruby-1.9.2-p290/gems/passenger-3.0.8;
+    passenger_ruby /home/user/.rvm/wrappers/ruby-1.9.2-p290/ruby;
+    passenger_max_pool_size 10;
+   # access_log  logs/localhost.access.log  main;	
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    gzip  on;
+
+    server {
+        listen       8080;
+        server_name  localhost;
+#	access_log   logs/domain2.access.log  main;		
+	root /home/user/hello_world/public;
+#	root /home/user/project/db
+	passenger_enabled on;
+	passenger_use_global_queue on;
+	rails_env development;
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+     #   location / {
+      #      root   html;
+       #     index  index.html index.htm;
+       # }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443;
+    #    server_name  localhost;
+
+    #    ssl                  on;
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_timeout  5m;
+
+    #    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers   on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}
+
+

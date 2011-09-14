@@ -10,3 +10,7 @@ A.
       end
 
       A.new.number_to_currency(12)
+
+Q. how to fix uninitialized constant ActiveSupport::Dependencies::Mutex error
+A. rvm 1.8.7 gem install rubygems-update -v='1.4.2'
+   update_rubygems

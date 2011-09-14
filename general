@@ -17,3 +17,6 @@ A. $PATH
 
 Q. How to set up path in ubuntu 
 A. export PATH="/home/user/github:$PATH"
+
+Q. how to delete ubuntu user
+A. sudo deluser passenger

@@ -17,5 +17,10 @@ sudo apt-get install libmysql-ruby libmysqlclient-dev libmysqlclient12-dev
 
 Q.Netbeen Install from the following site
  http://dlc.sun.com.edgesuite.net/netbeans/6.9/rc/
-Emacs install from package
+ Emacs install from package
  Synacptic package manager
+
+Q. Firefox installation
+   sudo apt-get-repository ppa:mozillateam/firefox-stable
+   sudo apt-get update
+   sudo apt-get install firefox
