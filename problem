@@ -1,0 +1,128 @@
+Q. Run plugin test 
+A. rake test:plugins PLUGIN=acts_as_workflowable
+
+Q. how to check machine running under 32bit or 64bit
+A. uname -a
+   If its 32bit then in the output it will be i686 GNU/Linux
+   If it is 64bit then in the output it will be x86 64 GNU/Linux
+
+Q. Run single test file for plugin 
+A. rake test:plugins TEST=vendor/plugins/acts_as_workflowable/test/functional/workflows_controller_test.rb
+
+Q. Jquery validation plugins check single element validation
+  <input type="text" size="47" name="workflow[name]" maxlength="35" id="workflow_name" class="required">
+  if ( $('#workflow_name').valid())
+
+Q. gem file not loading in netbin using rvm 
+A. ln -s /home/sandip/.rvm/gems/ruby-1.9.2-p136/ /home/sandip/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/gems/1.9.1
+
+Q. ArgumentError: comparison of Date with ActiveSupport::TimeWithZone failed
+  use "to_date" method
+  http://stackoverflow.com/questions/349845/how-to-return-a-date-not-a-timewithzone-from-a-oracle-date-column-in-activereco
+
+Q. Image magick installation problem 
+A.   run configuration file using 
+  ./configure CC=c99 CFLAGS=-O2 LDFLAGS='-L/usr/local/lib -R/usr/local/lib' LIBS=-lposix
+  http://www.imagemagick.org/script/advanced-unix-installation.php
+
+Q. Sphinx Daemon returned error: index event_core,event_delta: syntax error, unexpected '/', expecting $end near '/'
+A. User search using Riddle.escape( Event.search])
+   Event.search Riddle.escape(params[:search])
+
+Q. Thinking sphinx delta is not working, you should update your production env
+   ThinkingSphinx.deltas_enabled = true 
+   ThinkingSphinx.updates_enabled = true
+
+   http://stackoverflow.com/questions/7255941/thinking-sphinx-min-inflex-len-and-delta-not-working-on-production-server
+
+Q. How to fix after application lunch on ubuntu if I click minimize button, then those application are not showing into buttom panel.
+A. Click on Add to panel and select "window selector" and click on "add".  
+
+Q. How to find included module in an module.
+A.  ActionController::Base.ancestors
+    ActionController::Base.included_modules
+
+Q. how to find instace methods of any module
+A. A.methods(false)
+   A.instance_methods(false)
+   A.private_instance_methods(false)
+
+Q. configure /etc/passwd file related code access
+   require 'etc'
+   Etc.instance_methods(false)
+   
+Q. How to use manage heroku gem
+A. add .gems file in your application
+   hpricot --version '>= 0.2' --source code.whytheluckystiff.net 
+
+Q. crontab rake task is not working
+A. instead of use rake give the full path of rake
+   /usr/bin/rake
+
+Q.How to write crontab
+A. crontab -e 
+   
+Q. session is creation different behaviour, how to fixed that
+A. instead of use resources, use resource
+   map.resource :session
+
+  
+Q. How to include view in model
+A. class A < ActiveRecord::Base
+    include ActionView::Helpers::DateHelper
+   end
+another way 
+   ActionController::Base.helpers.methosd
+
+Q. How to access private methods form subclass
+A.   class A
+     def show
+        puts "public access"
+     end
+     
+     private
+     def display
+        puts "private access"
+     end
+   end
+  
+  A.new.show   =>  "public access"
+  A.new.display  => NoMethodError: private method `display' called for #<A:0xb76854f4>
+  A.new.send(:display) =>  "private access"
+  B.new.send(:display) =>  "private access"
+
+
+ A.  class A
+       def show
+         puts self
+         display
+       end 
+     	
+       private
+       def display
+         puts "private access"
+       end
+     end
+     class B < A
+     end
+ 
+   B.new.show => "private access" #here display is calling from show method, here display is implecit recever
+
+A.  class A
+       def show
+         self.display
+       end 
+     	
+       private
+       def display
+         puts "private access"
+       end
+     end
+     class B < A
+     end
+      
+   B.new.show => NoMethodError: private method `display' called for #<B:0xb78378c4>   # here display method is calling from show method, but it take explicit recever
+
+
+
+        
