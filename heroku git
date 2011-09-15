@@ -89,6 +89,7 @@ sudo git install git-core
 ssh-keygen -t rsa -C "sandip_mondal85@yahoo.co.in"
 git config --global user.name
 git config --global user.email
+ssh-add
 rails new hello_world
 cd hello_world
 git init 

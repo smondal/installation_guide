@@ -24,3 +24,4 @@ Q. Firefox installation
    sudo apt-get-repository ppa:mozillateam/firefox-stable
    sudo apt-get update
    sudo apt-get install firefox
+q. how

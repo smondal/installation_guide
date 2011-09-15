@@ -124,5 +124,10 @@ A.  class A
    B.new.show => NoMethodError: private method `display' called for #<B:0xb78378c4>   # here display method is calling from show method, but it take explicit recever
 
 
+Q. Initialized empty Git repository in /home/sandip/aox-production/.git/
+Agent admitted failure to sign using the key.
+Permission denied (publickey).
+fatal: The remote end hung up unexpectedly
 
+A. ssh-add
         
