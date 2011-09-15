@@ -129,5 +129,5 @@ Agent admitted failure to sign using the key.
 Permission denied (publickey).
 fatal: The remote end hung up unexpectedly
 
-A. ssh-add
+A. ssh-add    #every changes in ssh file you should do that
         
