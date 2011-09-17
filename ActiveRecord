@@ -1,0 +1,24 @@
+Q.How to fiind current database used by rails application
+A. ActiveRecord::Base.connection.current_database
+
+Q. How to find current no of table used by the database
+A. ActiveRecord::Base.connection.tables
+
+Q.How to find charter set used by the database
+A. ActiveRecord::Base.connection.charset
+   User.connection.charset # here user is a model in rails application
+
+Q.How to find charter set used by the database
+  User.connection.collation
+
+Q.check table exixts or not
+  ActiveRecord::Base.connection.table_exists?('users')
+
+Q. ctreate table 
+A. ActiveRecord::Base.connection.create_table("projects")
+
+Q.Add column to table
+  ActiveRecord::Base.connection.add_column("projects", "name", "integer")
+
+Q. Establish connection with database
+   ActiveRecord::Base.establish_connection
