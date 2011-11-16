@@ -130,4 +130,16 @@ Permission denied (publickey).
 fatal: The remote end hung up unexpectedly
 
 A. ssh-add    #every changes in ssh file you should do that
+
+Q. oading development environment (Rails 2.3.2)
+/usr/local/lib/ruby/1.8/irb/completion.rb:10:in `require’: no such file to load — readline (LoadError)
+
+A.  sudo apt-get install libncurses5-dev
+    sudo apt-get install libreadline5-dev
+    cd /usr/src/ruby-1.8.7-p72/ext/readline
+    ruby extconf.rb
+    sudo make
+    sudo make install
+
+
         

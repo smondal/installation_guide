@@ -14,3 +14,9 @@ A.
 Q. how to fix uninitialized constant ActiveSupport::Dependencies::Mutex error
 A. rvm 1.8.7 gem install rubygems-update -v='1.4.2'
    update_rubygems
+
+Q.create logger multiple  file 
+A.  config.logger = Logger.new("#{RAILS_ROOT}/log/#{ENV['RAILS_ENV']}.log", 100, 200 * 1024  * 1024) 
+
+Q. How to set rvm ruby with gemset
+A. rvm use 1.8.7@rails3 --default
