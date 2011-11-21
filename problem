@@ -141,5 +141,14 @@ A.  sudo apt-get install libncurses5-dev
     sudo make
     sudo make install
 
+Q. mysqldump from remote machine can access 
+A. GRANT ALL ON testmate.* TO root@'10.44.234.138' IDENTIFIED BY 'v-training4!@#';
+   testmate : remote machine database
+   root@'10.44.234.138 : Localmachine host
+   v-training4!@#   : Local machine password
+   
+   file_name=testmate_`date +%d-%m-%Y-%H:%M`.sql.gz
+   mysqldump -h 10.44.233.152 -u root --password='v-training4!@#' testmate | gzip > Production-Database-Backups/$file_name
+
 
         
