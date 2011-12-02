@@ -20,3 +20,25 @@ A. export PATH="/home/user/github:$PATH"
 
 Q. how to delete ubuntu user
 A. sudo deluser passenger
+
+Q. How to start mysql
+A. sudo /etc/init.d/mysql start   
+A. sudo service mysql start
+
+Q. How to see mysql status
+A. sudo /etc/init.d/mysql status
+
+Q. How to see all the service 
+A. service --status-all
+
+Q. See memory info for cpu
+A. free -m
+
+Q. See cpu info
+A. cat /proc/cpuinfo
+
+Q.How to see the passenge status
+A.  passenger-status
+
+Q. How to see passenger memory status
+A. passenger-memory-stats
