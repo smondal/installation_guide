@@ -31,6 +31,24 @@ heroku addons
 heroku rename newname
 
 
+problem
+==================================================
+git clone git@heroku.com:aox-production.git -o heroku
+Permission denied (publickey).
+fatal: The remote end hung up unexpectedly
+
+heroku login
+ssh-keygen -t rsa -C "sandip_mondal85@yahoo.co.in"
+heroku keys:add
+ git clone git@heroku.com:aox-production.git -o heroku
+
+
+
+
+
+
+
+
 
 Capistrano Setup
 ============================================================
