@@ -142,4 +142,8 @@ http {
 
 }
 
+===========================================
+passenger-status
+passenger-memory-status
+
 
