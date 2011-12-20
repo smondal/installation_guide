@@ -1,0 +1,14 @@
+mv config/database.yml config/database_example.yml
+rm -r log/*
+rm -r tmp/*
+mkdir trunk
+mkdir branches
+mkdir tags
+svn import . svn://localhost/blab -m "initial import" --username smondal85
+svn co svn://localhost/blab/trunk blab
+cp config/database_example.yml config/database.yml
+svn status
+svn propset svn:ignore database.yml config
+svn propset svn:ignore '*' log/
+svn propset svn:ignore '*' tmp/
+svn commit -m "ignore files" 
