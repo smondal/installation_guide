@@ -12,3 +12,9 @@ for db in $DBS; do
 	$MYSQL -u$MUSER -p$MPASSWORD -Bse "drop $db" 
     fi
 done
+
+
+## Recover database password
+$ sudo service mysql stop
+$ sudo mysqld_safe --skip-grant-tables &
+$ mysql -u root
