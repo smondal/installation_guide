@@ -12,7 +12,7 @@ A. In Home folder, store as a hidden file.
 Q. Remove installation file from ubuntu
 A. dpkg -r file_name
 
-Q.How to show load path
+Q. How to show load path
 A. $PATH
 
 Q. How to set up path in ubuntu 
@@ -37,8 +37,15 @@ A. free -m
 Q. See cpu info
 A. cat /proc/cpuinfo
 
-Q.How to see the passenge status
+Q. How to see the passenge status
 A.  passenger-status
 
 Q. How to see passenger memory status
 A. passenger-memory-stats
+
+Q. create super user in ubuntu
+A. $ sudo adduser sandip
+   $ sudo adduser sandip admin
+
+Q. How to password change in ubuntu
+A. remove second line from etc/shadow
