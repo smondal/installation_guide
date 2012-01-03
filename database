@@ -18,3 +18,23 @@ done
 $ sudo service mysql stop
 $ sudo mysqld_safe --skip-grant-tables &
 $ mysql -u root
+
+## mysql data dir
+  datadir = /var/lib/mysql
+
+##how to recover database delete
+i) Add the following line in your /etc/mysql/my.cnf file
+  log_bin = /var/log/mysql/mysql-bin.log
+  max_binlog_size = 100M
+  
+ii)stop your mysql server
+   $ sudo service mysql stop
+ 
+iii)start your mysql server
+   $ sudo service mysql start
+  
+iv) copy /var/log/mysql-bin.00001 to one file 
+    mysqlbinlog /var/log/mysql/mysql-bin.000001 > statement.sql
+v) statement.sql file contails all the database operation
+   It will show all     
+  
