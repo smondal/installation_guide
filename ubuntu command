@@ -1,0 +1,68 @@
+$ sudo apt-get update
+$ sudo apt-get install git
+$ bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
+$ rvm install 1.9.2
+$ rvm pkg install zlib
+$ cd ruby-1.9.2-p0/ext/zlib
+ruby extconf.rb
+make
+sudo make install
+$ rvm gem install rails
+$ suod apt-get install mysql-server
+  following extra packages will be installed(libdbd-mysql-perl libdbi-perl libhtml-template-perl libmysqlclient16 	libnet-demon-perl liplrpc-perl mysql-client-5.1 mysql-client-core5.1 mysql-common mysql-server-5.1 mysql-server-core-5.1)
+
+$ sudo apt-get install libmysqlclient-dev
+  following new packages will be install 
+  (zlibg-dev libmysqlclient-dev) 
+
+mongoDB install
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+add a line into source.list
+deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen - on Ubuntu
+$ sudo apt-get install mongodb-10gen
+
+# openssl problem
+sudo apt-get install libssl-dev
+/home/user/.rvm/archives/ruby-1.9.2-p290/ext/openssl
+ruby extconf.rb 
+make
+sudo make install
+
+# marshel data too shot(Argument error)
+remove .gems/spec folder
+
+# shutdown is not working
+http://salaba.wordpress.com/2011/05/28/ubuntu-11-04-shut-down-problem-solved/
+
+
+# nokogiri install problen libxml perser
+$ sudo apt-get install libxml2
+$ sudo apt-get install libxslt-dev libxml2-dev
+
+
+# readline
+sudo apt-get install libncurses5-dev libreadline5-dev
+/home/user/.rvm/archives/ruby-1.9.2-p290/ext/readline
+ruby extconf.rb 
+make
+sudo make install
+
+#redis installation
+curl -0 http://redis.googlecode.com/files/redis-1.0.tar.gz
+tar xvzf redis-1.0.tar.gz
+cd redis-1.0
+make
+sudo cp redis-server redis-cli redis-benchmark /user/local/bin
+redis-server
+
+
+# mongodb connection problem
+sudo rm /var/lib/mongodb/mongod.lock
+sudo -u mongodb mongod -f /etc/mongodb.conf --repair
+sudo start mongodb
+sudo status mongodb
+
+# no public key found in . you want to specify full path 
+$ ssh-keygen -t rsa -C "sandip_mondal85@yahoo.co.in"
+$heroku keys:add
+
