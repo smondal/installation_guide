@@ -49,3 +49,7 @@ A. $ sudo adduser sandip
 
 Q. How to password change in ubuntu
 A. remove second line from etc/shadow
+
+Q. Permission denied (publickey).
+fatal: The remote end hung up unexpectedly
+A. ssh-add

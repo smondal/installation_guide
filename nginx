@@ -3,6 +3,22 @@ Nginx setup
 rvm gem install passenger
 passenger-install-nginx-module
 sudo apt-get install libcurl4-openssl-dev
+option 1
+from othe command line chmod -R 777 /opt
+http{
+ ...
+      passenger_root /home/user/.rvm/gems/ruby-1.9.2-p290/gems/passenger-3.0.11;
+      passenger_ruby /home/user/.rvm/wrappers/ruby-1.9.2-p290/ruby;
+      ...
+}
+server {
+      listen 80;
+      server_name www.yourhost.com;
+      root /somewhere/public;   # <--- be sure to point to 'public'!
+      passenger_enabled on;
+   }
+
+
 rvm 1.9.2 --passenger
 rvm 1.9.2
 gem install passenger         
