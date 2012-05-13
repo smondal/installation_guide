@@ -53,3 +53,7 @@ A. remove second line from etc/shadow
 Q. Permission denied (publickey).
 fatal: The remote end hung up unexpectedly
 A. ssh-add
+
+Q. How to find install sotware in ubuntu
+A. dpkg --list | grep softwarename
+A. dpkg --get-selections | grep softwarename 
