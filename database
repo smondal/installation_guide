@@ -45,3 +45,12 @@ If you want to listin all ip address of your server comment out or remove bind a
 
 ## why used  netstat -an 
 show list of tcp port used by 
+
+## How to load default database (mysql and schema)
+mysql_install_db
+
+## how to mysql user change
+update mysql.user SET Password=PASSWORD('MyNewPass') WHERE User='root';
+FLUSH PRIVILEGES;
+
+
