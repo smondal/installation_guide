@@ -57,3 +57,7 @@ A. ssh-add
 Q. How to find install sotware in ubuntu
 A. dpkg --list | grep softwarename
 A. dpkg --get-selections | grep softwarename 
+
+Q. How to dns chane
+A. open /etc/sysclt.conf and unconnent the following line
+    kernel.domainname = sandip.com

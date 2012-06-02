@@ -162,4 +162,205 @@ http {
 passenger-status
 passenger-memory-status
 
+Q. SSL certificate creation
+A. i.   openssl genrsa -out sandipmondal.key 2048
+   ii.  openssl req -new -key sandipdomain.key -out sandipdomain.csr
+   iii. openssl rsa -in sandipdomain.key.org -out sandipdomain.key
+   iv. openssl x509 -req -days 365 -in sandipdomain.csr -signkey sandipdomain.key -out sandipdomain.crt
+   
+   ningx.conf
+   ==================
+   
+   #user and group to run as
+#user ixnginx ixnginx;
+
+
+# number of nginx workers
+worker_processes  2;
+#worker_cpu_affinity 1000 0100 0010 0001; 
+
+error_log  /opt/nginx/logs/error.log;
+# pid of nginx master process
+pid  logs/nginx.pid;
+
+# Number of worker connections. 1024 is a good default
+events{
+	worker_connections 2048;
+}
+
+# start the http module where we config http access.
+http {
+	passenger_root /home/user/.rvm/gems/ruby-1.9.2-p290/gems/passenger-3.0.12;
+	passenger_ruby /home/user/.rvm/wrappers/ruby-1.9.2-p290/ruby;
+
+	passenger_max_pool_size 120;
+
+	# pull in mime-types. You can break out your config 
+	# into as many include's as you want to make it cleaner
+	include       mime.types;
+
+	# set a default type for the rare situation that
+	# nothing matches from the mimie-type include
+	default_type  application/octet-stream;
+	
+
+	 ## Size Limits
+	# client_body_buffer_size   100k;
+	# client_header_buffer_size 50k;
+	 client_max_body_size      555M;
+	# large_client_header_buffers 1 1k;
+
+	 ## Timeouts 
+	# client_body_timeout   10;
+	# client_header_timeout 5;
+	# keepalive_timeout     5 5;
+	# send_timeout          5;	
+
+	 ## General Options
+	# ignore_invalid_headers   on;
+	# limit_zone gulag $binary_remote_addr 1m;
+	# recursive_error_pages    on;
+	 sendfile                 on;
+	 server_name_in_redirect  on;
+	 server_tokens           off;
+  
+	 ## TCP options  
+	 # tcp_nodelay on;
+	 tcp_nopush  off;  
+
+         gzip on;
+	 gzip_http_version 1.1;
+	 gzip_comp_level 6;
+	 gzip_proxied any;
+	# gzip_min_length  100;
+	# gzip_buffers 16 8k;
+	# gzip_types text/plain text/css application/x-javascript text/xml application/xml application/xml+rss text/javascript ;
+  
+	 # Some version of IE 6 don't handle compression well on some mime-types,
+	 # so just disable for them
+	# gzip_disable "MSIE [1-6].(?!.*SV1)";  
+	 # Set a vary header so downstream proxies don't send cached gzipped 
+	 # content to IE6
+	 gzip_vary on;  
+
+         # configure log format
+	 log_format  main  '$time_local' '$request_time $remote_addr - $remote_user $status '
+                		'"$request" "$http_referer" '
+                		'"$http_user_agent" "http_x_forwarded_for" $body_bytes_sent "$gzip_ratio"';
+
+	 # main access log
+	 access_log  /opt/nginx/logs/access.log  main;
+
+	 #upstream_fair_shm_size 1024k;	
+  	 # production for qa on port 80 running from /var/www/ct_test
+	 # This uses 4 mogrels from 4000 through 4003
+	 #include production_nginx.conf;
+
+	server { 
+         	 # port to listen on. Can also be set to an IP:PORT
+	         listen       8085;
+                 ##client_max_body_size 500M;
+        	 # sets the domain[s] that this vhost server requests for
+	         #TBD
+        	 server_name 10.22.108.157; 
+ 
+	         # doc root
+        	 root /home/user/project/trunk/public/;
+
+	         passenger_enabled on;
+		 passenger_use_global_queue on;
+
+		 rails_env development;
+
+        	 # vhost specific access log
+	         access_log  logs/production.access.log  main;
+		## client_max_body_size  500M;
+
+	         if (-f $document_root/maintenance.html){
+	              rewrite  ^(.*)$  /maintenance.html last;
+        	      break;
+	          }
+
+	         # Block access to paths containing .svn
+        	   #--location ~* ^.*\.svn.*$ {
+	           #--     #internal;
+        	   #--     return 444; 
+	          #--}
+		  # serve static content directly 
+
+	         location ~* ^.+\.(jpg|jpeg|flv|gif|css|png|js|ico|html|swf|favicon\.ico|robots\.txt)$ {
+        	   access_log	off;
+	           expires	365d;
+        	 }
+
+	         #--location / {
+        	     #-- proxy_set_header Host $http_host;
+		     # If the file exists as a static file serve it directly without
+        	     # running all the other rewite tests on it
+	             #--if (-f $request_filename) { 
+        	     #--  break; 
+	         #--}
+
+         	 # check for index.html for directory index
+                 # if its there on the filesystem then rewite 
+                 # the url to add /index.html to the end of it
+                 # and then break to send it to the next config rules.
+                 #if (-f $request_filename/index.html) {
+                   # rewrite (.*) $1/index.html break;
+                 #}
+                 # this is the meat of the rails page caching config
+                 # it adds .html to the end of the url and then checks
+                 # the filesystem for that file. If it exists, then we
+                 # rewite the url to have explicit .html on the end 
+                 # and then send it on its way to the next config rule.
+                 # if there is no file on the fs then it sets all the 
+                 # necessary headers and proxies to our upstream mongrels
+                 #if (-f $request_filename.html) {
+                 # rewrite (.*) $1.html break;
+                #}
+              
+                #proxy_pass http://mongrel_cluster;
+                 
+       	       #--}
+	
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+          root   html;
+        } 
+}   
+   
+
+   server{
+	server_name sandipdomain;
+	listen 8080;
+	
+	root /home/user/project/trunk/public/;
+	ssl on;
+	ssl_certificate /opt/nginx/conf/sandipdomain.crt;
+	ssl_certificate_key /opt/nginx/conf/sandipdomain.key;
+        ssl_session_timeout  5m;
+
+        #ssl_protocols  SSLv2 SSLv3 TLSv1;
+        #ssl_ciphers  HIGH:!aNULL:!MD5;
+        #ssl_prefer_server_ciphers   on;
+
+	location / {
+          proxy_pass http://localhost:3000;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Client-Verify SUCCESS;
+          proxy_set_header X-Client-DN $ssl_client_s_dn;
+          proxy_set_header X-SSL-Subject $ssl_client_s_dn;
+          proxy_set_header X-SSL-Issuer $ssl_client_i_dn;
+          proxy_read_timeout 1800;
+          proxy_connect_timeout 1800;
+        }
+
+}
+
+	
+}
+    
+
 
