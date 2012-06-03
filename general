@@ -61,3 +61,10 @@ A. dpkg --get-selections | grep softwarename
 Q. How to dns chane
 A. open /etc/sysclt.conf and unconnent the following line
     kernel.domainname = sandip.com
+
+Q. How to domain name change
+A. Open /ets/hosts file and change the file
+   127.0.0.1	localhost sandipdomain
+   0.22.108.157    sandip
+   0.22.108.157   sandip.com
+
