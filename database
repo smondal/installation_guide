@@ -14,16 +14,16 @@ for db in $DBS; do
 done
 
 
-## Recover database password
+Q. Recover database password
 $ sudo service mysql stop
 $ sudo mysqld_safe --skip-grant-tables &
 $ mysql -u root
 sql> flush privileges;
 
-## mysql data dir
-  datadir = /var/lib/mysql
+Q. mysql data dir
+A. datadir = /var/lib/mysql
 
-##how to recover database delete
+Q. how to recover database delete
 i) Add the following line in your /etc/mysql/my.cnf file
   log_bin = /var/log/mysql/mysql-bin.log
   max_binlog_size = 100M
@@ -39,18 +39,21 @@ iv) copy /var/log/mysql-bin.00001 to one file
 v) statement.sql file contails all the database operation
    It will show all  
 
-## why use bind-address
-mysql is lisiting on the address by default is it listing localhost(127.0.0.1)
+Q. why use bind-address
+A. mysql is lisiting on the address by default is it listing localhost(127.0.0.1)
 If you want to listin all ip address of your server comment out or remove bind address   
 
-## why used  netstat -an 
-show list of tcp port used by 
+Q. why used  netstat -an 
+A. show list of tcp port used by 
 
-## How to load default database (mysql and schema)
-mysql_install_db
+Q How to load default database (mysql and schema)
+A. mysql_install_db
 
-## how to mysql user change
-update mysql.user SET Password=PASSWORD('MyNewPass') WHERE User='root';
+Q how to mysql user change
+A. update mysql.user SET Password=PASSWORD('MyNewPass') WHERE User='root';
 FLUSH PRIVILEGES;
 
+
+Q. How to remove database
+A. sudo apt-get --purge remove mysql-server mysql-common mysql-client
 

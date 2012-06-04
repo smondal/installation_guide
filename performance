@@ -1,2 +1,4 @@
 Ruby on Rails performance tips:
 =====================================
+Q. how to appache benchmark work
+A. ab -n 1000 -A sandip_mondal:passw0rd123l! -c 5 http://v-testmate4:8085/questions
