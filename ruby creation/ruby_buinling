@@ -1,0 +1,29 @@
+Building Our Extension
+We’ll have a lot more to say about building extensions later. For now, though, all we have
+to do is follow these steps:
+1. Create a file called extconf.rb in the same directory as our my_test.c C source file.
+The file extconf.rb should contain the following two lines:
+Download samples/extruby_3.rb
+require 'mkmf'
+create_makefile("my_test")
+
+
+2. Run extconf.rb. This will generate a Makefile:
+% ruby extconf.rb
+creating Makefile
+
+
+3. Use make to build the extension. On an OS X system, you’d see:
+% make
+gcc -fno-common -g -O2 -pipe -fno-common -I.
+-I/usr/lib/ruby/1.9/powerpc-darwin7.4.0
+-I/usr/lib/ruby/1.9/powerpc-darwin7.4.0 -I.
+-c my_test.c
+cc -dynamic -bundle -undefined suppress -flat_namespace
+-L'/usr/lib' -o my_test.bundle my_test.o -ldl -lobjc
+The result of all this is the extension, all nicely bundled up in a shared object (a .so, a .dll,
+or [on OS X] a .bundle).
+Report erratum
+
+
+4. make install
