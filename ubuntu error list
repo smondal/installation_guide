@@ -31,3 +31,9 @@ A. I have changed the ruby file to 1.8.7
 
 Q. Mongrel installation ERROR: Failed to build gem native extension. 
 A. rvm 1.9.2 gem install mongrel --pre
+
+Q. remote desktop is not working
+A. sudo apt-get install openssh-servere
+
+Q.Remote desktop view
+A. rdesktop ps5973(machine name)

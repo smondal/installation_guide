@@ -66,3 +66,6 @@ sudo status mongodb
 $ ssh-keygen -t rsa -C "sandip_mondal85@yahoo.co.in"
 $heroku keys:add
 
+# How to set environment variable in ubuntu
+export Hello="Sandip"  # using export command
+
