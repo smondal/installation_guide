@@ -68,3 +68,6 @@ A. Open /ets/hosts file and change the file
    0.22.108.157    sandip
    0.22.108.157   sandip.com
 
+Q. How to copy folder from ec2 server to localhost
+A. sudo scp -r -i pacerpro.pem ec2-user@ec2-50-17-65-79.compute-1.amazonaws.com:/mnt/data/www/MyECF-Pacer-Service/public/media/akb/* /home/sandip/PacerPro/Media/
+
