@@ -71,3 +71,9 @@ A. Open /ets/hosts file and change the file
 Q. How to copy folder from ec2 server to localhost
 A. sudo scp -r -i pacerpro.pem ec2-user@ec2-50-17-65-79.compute-1.amazonaws.com:/mnt/data/www/MyECF-Pacer-Service/public/media/akb/* /home/sandip/PacerPro/Media/
 
+Q. apt-get update active
+A. create an file apf.conf and put it into /etc/apt folder
+
+Q. what apt.conf contain
+A. acquire::http::Proxy "http://visible_curlproxy:Pspl&123@puneproxy.persistent.co.in:8080";
+
