@@ -77,3 +77,12 @@ A. create an file apf.conf and put it into /etc/apt folder
 Q. what apt.conf contain
 A. acquire::http::Proxy "http://visible_curlproxy:Pspl&123@puneproxy.persistent.co.in:8080";
 
+Q. How to copy file content from one to another
+A.grep alias .profile > .bash_aliases
+
+Q. how to see file content 
+A. grep -l alias *
+
+Q. How to see ubuntu user credential
+A. id
+
