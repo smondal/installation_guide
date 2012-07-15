@@ -1,0 +1,46 @@
+rvmsudo passenger-install-nginx-module
+sudo apt-get install apache2-prefork-dev
+
+--------------------------------------------
+The Apache 2 module was successfully installed.
+
+Please edit your Apache configuration file, and add these lines:
+
+   LoadModule passenger_module /home/user/.rvm/gems/ruby-1.9.2-p290/gems/passenger-3.0.13/ext/apache2/mod_passenger.so
+   PassengerRoot /home/user/.rvm/gems/ruby-1.9.2-p290/gems/passenger-3.0.13
+   PassengerRuby /home/user/.rvm/wrappers/ruby-1.9.2-p290/ruby
+
+After you restart Apache, you are ready to deploy any number of Ruby on Rails
+applications on Apache, without any further Ruby on Rails-specific
+configuration!
+
+Press ENTER to continue.
+
+--------------------------------------------
+Deploying a Ruby on Rails application: an example
+
+Suppose you have a Rails application in /somewhere. Add a virtual host to your
+Apache configuration file and set its DocumentRoot to /somewhere/public:
+
+   <VirtualHost *:80>
+      ServerName www.yourhost.com
+      # !!! Be sure to point DocumentRoot to 'public'!
+      DocumentRoot /somewhere/public    
+      <Directory /somewhere/public>
+         # This relaxes Apache security settings.
+         AllowOverride all
+         # MultiViews must be turned off.
+         Options -MultiViews
+      </Directory>
+   </VirtualHost>
+
+And that's it! You may also want to check the Users Guide for security and
+optimization tips, troubleshooting and other useful information:
+
+  /home/user/.rvm/gems/ruby-1.9.2-p290/gems/passenger-3.0.13/doc/Users guide Apache.html
+
+Enjoy Phusion Passenger, a product of Phusion (www.phusion.nl) :-)
+http://www.modrails.com/
+
+Phusion Passenger is a trademark of Hongli Lai & Ninh Bui.
+

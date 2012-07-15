@@ -1,3 +1,6 @@
+#creating gem structure 
+bundle gem gemname
+
 # Building your gem
 gem build hello.gemspec
 
