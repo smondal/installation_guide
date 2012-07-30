@@ -113,5 +113,11 @@ http://localhost:3000/users/password/new
 http://localhost:3000/users/sign_in
  
 
-
+# how to recover undefined method `database_authenticatable' for #<ActiveRecord::ConnectionAdapters::TableDefinition:0x9faa9fc>
+A. update your devise gem.
+   gem devise, '2.1.1' 
+   bundle install
+   rails generate devise install
+   rake db:migrate
+   ra 
 

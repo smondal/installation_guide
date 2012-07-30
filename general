@@ -86,3 +86,6 @@ A. grep -l alias *
 Q. How to see ubuntu user credential
 A. id
 
+Q. what does this command do :-
+A.  vmstat 2 5 
+

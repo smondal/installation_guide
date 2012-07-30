@@ -24,3 +24,6 @@ A. rvm use 1.8.7@rails3 --default
 Q. Rvm install on ubuntu machine
 A. 1. sudo apt-get install libmagick9-dev ruby1.8-dev
    2. sudo gem install rmagick
+
+Q. How to compile sass and coffescript
+A. rake assets:precompile

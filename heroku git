@@ -55,6 +55,7 @@ end
 
 Q. how to clear database on heroku
 A. heroku pg:reset SHARED_DATABASE
+ heroku run rake db:create
 
 
 
