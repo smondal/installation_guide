@@ -57,3 +57,21 @@ FLUSH PRIVILEGES;
 Q. How to remove database
 A. sudo apt-get --purge remove mysql-server mysql-common mysql-client
 
+Q. procedure show
+A. SHOW PROCEDURE STATUS;
+
+Q. #<ActiveRecord::StatementInvalid: Mysql2::Error: PROCEDURE pacerpro_1.5.usp_AddCICMS_Synonyms does not exist: CALL usp_AddCICMS_Synonyms(48903, 17, @vResultCode)>
+
+
+mysql> SHOW PROCEDURE STATUS;
++----------------+------------------------------+-----------+---------+---------------------+---------------------+---------------+---------+----------------------+----------------------+--------------------+
+| Db             | Name                         | Type      | Definer | Modified            | Created             | Security_type | Comment | character_set_client | collation_connection | Database Collation |
++----------------+------------------------------+-----------+---------+---------------------+---------------------+---------------+---------+----------------------+----------------------+--------------------+
+| pacerpro_alpha | usp_AddCICMS_Synonyms        | PROCEDURE | root@%  | 2012-06-20 18:57:46 | 2012-06-20 18:57:46 | DEFINER       |         | utf8                 | utf8_general_ci      | latin1_swedish_ci  |
+
+
+Q. how to connect database server in different host 
+A. mysql -u root -p --host=host_name
+
+
+

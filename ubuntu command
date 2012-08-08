@@ -69,3 +69,6 @@ $heroku keys:add
 # How to set environment variable in ubuntu
 export Hello="Sandip"  # using export command
 
+# how to find file 
+A. grep pdfserver `find -iname *.rb`
+
