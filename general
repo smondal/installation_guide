@@ -87,5 +87,8 @@ Q. How to see ubuntu user credential
 A. id
 
 Q. what does this command do :-
-A.  vmstat 2 5 
+A.  vmstat 2 5
+
+Q. List of cloud pllat form
+A. Amzon EC2, RDS, Heroku, Bluebox, RackSpace, High Velocity, Xeround  
 

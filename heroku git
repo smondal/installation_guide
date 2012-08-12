@@ -15,6 +15,12 @@ heroku rake db:migrate
   git commit -m "rake use" .
   git push heroku master
 
+#merging github code to existing heroku application 
+go to applicaion 
+git remote add heroku git@heroku.com:solrsystem.git  #heroku github
+git remote -v
+git push heroku master
+
 
 
 note
@@ -56,10 +62,27 @@ end
 Q. how to clear database on heroku
 A. heroku pg:reset SHARED_DATABASE
  heroku run rake db:create
+Q. how to back up heroku database
+A. heroku pgbackups:capture
+
+Q. List of pgback up 
+A. heroku pgbackups
+
+Q. saved database location
+A. heroku pgbackups:url b001
+
+Q. Heroku data store into database
+heroku pgbackups:url b001
+A.  heroku pgbackups:restore DATABASE "https://s3.amazonaws.com/hkpgbackups/app6058169@heroku.com/b001.dump?AWSAccessKeyId=AKIAIYZ2BP3RBVXEIZDA&Expires=1344446375&Signature=dv2EWvhzvStvdS3OExqnVM6xmtM%3D"
+
+A. heroku pgbackups:restore DATABASE b003 
 
 
 
-
+Q. github push
+A. git push origin master
+Q Heroku push
+git push heroku master 
 
 
 
@@ -128,6 +151,7 @@ git add .
 git commit -m "initial import" 
 create a repository
 git remote add origin git@github.com:smondal/installation_guide.git
+git pull git@github.com:smondal/installation_guide.git
 git push origin master
 
 

@@ -1,0 +1,31 @@
+branch name                                                     branch name
+safe-ocean-5719(staging copy heroku)                            relif_engineer(working copy github)
+
+Q. How to pull from heroku
+A. git clone git@heroku.com:safe-ocean-5719.git                 
+
+Q. git remote -v                                               Q. git remote -v
+A.                                                            
+heroku git@heroku.com:safe-ocean-5719.git (fetch)              A.
+heroku	git@heroku.com:safe-ocean-5719.git (push)                origin	git@github.com:smondal/relief_eng.git (fetch)
+                                                                 origin	git@github.com:smondal/relief_eng.git
+
+
+Q. How to add relif_enginer to staging 
+A. safe-ocean-5719$ git remote add origin git@github.com:smondal/relief_eng.git
+   Here github copy added into safe-ocen-5719 so both heroku push and github
+   push work, priviously only heroku push was working. see upper command.
+
+   Heroku push
+   git push heroku master( here heroku)
+   
+   Github push
+   git push origin master (here origin)
+
+Q. Now run git remote -v
+A
+heroku	git@heroku.com:safe-ocean-5719.git (fetch)
+heroku	git@heroku.com:safe-ocean-5719.git (push)
+origin	git@github.com:smondal/relief_eng.git (fetch)
+origin	git@github.com:smondal/relief_eng.git (push)
+
