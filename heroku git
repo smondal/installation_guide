@@ -21,6 +21,10 @@ git remote add heroku git@heroku.com:solrsystem.git  #heroku github
 git remote -v
 git push heroku master
 
+#Heroku information
+heroku config
+
+heroku info
 
 
 note
@@ -61,7 +65,7 @@ end
 
 Q. how to clear database on heroku
 A. heroku pg:reset SHARED_DATABASE
- heroku run rake db:create
+   heroku run rake db:create
 Q. how to back up heroku database
 A. heroku pgbackups:capture
 
@@ -75,6 +79,10 @@ Q. Heroku data store into database
 heroku pgbackups:url b001
 A.  heroku pgbackups:restore DATABASE "https://s3.amazonaws.com/hkpgbackups/app6058169@heroku.com/b001.dump?AWSAccessKeyId=AKIAIYZ2BP3RBVXEIZDA&Expires=1344446375&Signature=dv2EWvhzvStvdS3OExqnVM6xmtM%3D"
 
+for HEROKU_POSTGRESQL_WHITE
+ 
+heroku pgbackups:restore HEROKU_POSTGRESQL_WHITE "https://s3.amazonaws.com/hkpgbackups/app3396572@heroku.com/b005.dump?AWSAccessKeyId=AKIAIYZ2BP3RBVXEIZDA&Expires=1345086066&Signature=RGXNCa5GerfXmvBomw3qBC3mZjo%3D"
+
 A. heroku pgbackups:restore DATABASE b003 
 
 
@@ -83,6 +91,24 @@ Q. github push
 A. git push origin master
 Q Heroku push
 git push heroku master 
+
+
+
+Heroku on staging server
+============================================
+
+heroku create --remote staging
+git push staging master
+heroku run rake db:migrate --remote staging
+heroku ps --remote staging
+
+
+
+
+
+
+
+
 
 
 
@@ -137,6 +163,11 @@ end
 
 
 
+
+
+
+
+
 Github push
 =============================================================
 sudo git install git-core
@@ -155,7 +186,7 @@ git pull git@github.com:smondal/installation_guide.git
 git push origin master
 
 
-note 
+#note remove origin
 git remote rm origin
 git rm Filename
 

@@ -16,6 +16,9 @@ A. safe-ocean-5719$ git remote add origin git@github.com:smondal/relief_eng.git
    Here github copy added into safe-ocen-5719 so both heroku push and github
    push work, priviously only heroku push was working. see upper command.
 
+Q. copying data from github to heroku application(After every push you have to run pull command)
+   safe-ocean-5719$ git pull origin master
+
    Heroku push
    git push heroku master( here heroku)
    
@@ -28,4 +31,13 @@ heroku	git@heroku.com:safe-ocean-5719.git (fetch)
 heroku	git@heroku.com:safe-ocean-5719.git (push)
 origin	git@github.com:smondal/relief_eng.git (fetch)
 origin	git@github.com:smondal/relief_eng.git (push)
+
+
+Q. How to copy one database content tp other database in different app.
+relif_engineer$ heroku pgbackups:capture
+relif_engineer$ heroku pgbackups:url b001
+  output ""https://s3.amazonaws.com/hkpgbackups/app3396572@heroku.com/b005.dump?AWSAccessKeyId=AKIAIYZ2BP3RBVXEIZDA&Expires=1345086066&Signature=RGXNCa5GerfXmvBomw3qBC3mZjo%3D""
+
+user@sandip:~/freeliancer/Ezra/relief-eng-staging$ heroku pgbackups:restore HEROKU_POSTGRESQL_WHITE "https://s3.amazonaws.com/hkpgbackups/app3396572@heroku.com/b005.dump?AWSAccessKeyId=AKIAIYZ2BP3RBVXEIZDA&Expires=1345086066&Signature=RGXNCa5GerfXmvBomw3qBC3mZjo%3D"
+
 
