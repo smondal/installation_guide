@@ -92,3 +92,12 @@ A.  vmstat 2 5
 Q. List of cloud pllat form
 A. Amzon EC2, RDS, Heroku, Bluebox, RackSpace, High Velocity, Xeround  
 
+Q, which process used by which server
+A. netstat -tulpn
+
+Q. how to file find 
+A. sudo find / -iname "*.fnm" #i is for case sensitive
+
+Q. how to folder find 
+A. sudo find / -name solr -type d
+
