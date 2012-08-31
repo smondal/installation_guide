@@ -101,3 +101,6 @@ A. sudo find / -iname "*.fnm" #i is for case sensitive
 Q. how to folder find 
 A. sudo find / -name solr -type d
 
+Q. How to delete hidden folder
+A. find -name "\.svn" -exec rm -rf {} \;
+

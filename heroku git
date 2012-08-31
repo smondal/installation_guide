@@ -103,8 +103,13 @@ heroku run rake db:migrate --remote staging
 heroku ps --remote staging
 
 
-
-
+HEROKU LOGIN FROM OFFICE COMPUTER
+=====================================================
+remove apt.conf from /etc/apt
+unset http_proxy
+export http_proxy=http://sandip_mondal:'s1234567l!'@puneproxy.persistent.co.in:8080/
+heroku login: sandip_mondal85@yahoo.co.in
+password: 
 
 
 
