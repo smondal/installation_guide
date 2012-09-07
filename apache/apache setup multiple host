@@ -1,0 +1,92 @@
+Q. Web Application directory
+A. /data/www/pacerpro_1.5/MyECF-Web-Application/current
+
+Q. Pacer Application directory
+A. /data/www/sprint5/MyECF-Pacer-Service-alpha/current
+
+
+===============================================================================================================================
+
+Q. Apache config
+   <VirtualHost _default_:80>
+        ServerName pacerpro-alpha.hoverstate.com 
+        ServerAlias alpha.pacerpro.com
+       # ServerName 23.22.184.199
+        DocumentRoot /data/www/pacerpro_1.5/MyECF-Web-Application/current/public/
+        ErrorLog "logs/pacerpro-alpha.hoverstate.com-error.log"
+        RailsEnv development
+        <Directory /data/www/pacerpro_1.5/MyECF-Web-Application/current>
+                AllowOverride all
+                Options -MultiViews
+                Allow from all
+        </Directory>
+
+<Location /server-status>
+SetHandler server-status
+
+Order Allow,Deny
+Allow from all
+</Location>
+
+        ProxyPass /pdf-service-alpha ajp://localhost:7009/pdf-service-alpha
+        ProxyPassReverse /pdf-service-alpha ajp://localhost:7009/pdf-service-alpha
+        ProxyPass /pdfserver ajp://localhost:7009/pdf-service-alpha
+        ProxyPassReverse /pdfserver ajp://localhost:7009/pdf-service-alpha
+
+        proxypass /phpmyadmin http://phpmyadmin/phpmyadmin
+        proxypassreverse /phpmyadmin http://phpmyadmin/phpmyadmin
+
+
+        #ProxyPass /MyECF-Search-Service-alpha http://localhost:8001/MyECF-Search-Service-alpha
+        #ProxyPassReverse /MyECF-Search-Service-alpha http://localhost:8001/MyECF-Search-Service-alpha
+
+        ProxyPass /MyECF-Search-Service-alpha ajp://localhost:7009/MyECF-Search-Service-alpha
+        ProxyPassReverse /MyECF-Search-Service-alpha ajp://localhost:7009/MyECF-Search-Service-alpha
+
+        ProxyPass /MyECF-Pacer-Service-alpha http://MyECF-Pacer-Service/MyECF-Pacer-Service-alpha
+        ProxyPassReverse /MyECF-Pacer-Service-alpha http://MyECF-Pacer-Service/MyECF-Pacer-Service-alpha
+
+        ProxyPass /MyECF-Pacer-Service-pat http://MyECF-Pacer-Service/MyECF-Pacer-Service-pat
+        ProxyPassReverse /MyECF-Pacer-Service-pat http://MyECF-Pacer-Service/MyECF-Pacer-Service-pat
+</VirtualHost>
+
+=================================================================================
+
+
+<VirtualHost *:80>
+    ServerName MyECF-Pacer-Service
+    DocumentRoot /data/www/sprint5/Pacer-Service-ROOT
+    RailsEnv development
+
+    <Directory /data/www/sprint5/Pacer-Service-ROOT>
+        Allow from all
+    </Directory>
+
+    RailsBaseURI /MyECF-Pacer-Service-alpha
+    <Directory /data/www/sprint5/Pacer-Service-ROOT/MyECF-Pacer-Service-alpha>
+        Options -MultiViews
+    </Directory>
+
+    RailsBaseURI /MyECF-Pacer-Service-beta
+    <Directory /data/www/sprint5/Pacer-Service-ROOT/MyECF-Pacer-Service-beta>
+        Options -MultiViews
+    </Directory>
+
+    RailsBaseURI /MyECF-Pacer-Service-pat
+    <Directory /data/www/sprint5/Pacer-Service-ROOT/MyECF-Pacer-Service-pat>
+        Options -MultiViews
+    </Directory>
+
+    RailsBaseURI /MyECF-Pacer-Service-prealpha
+    <Directory /data/www/sprint5/Pacer-Service-ROOT/MyECF-Pacer-Service-prealpha>
+        Options -MultiViews
+    </Directory>
+
+</VirtualHost>
+
+=====================================================================================
+
+Directory: /data/www/sprint5/Pacer-Service-ROOT/
+
+There is a symbolic link for pacer service alpha
+MyECF-Pacer-Service-alpha -> /data/www/sprint5/MyECF-Pacer-Service-alpha/current/public/
