@@ -40,4 +40,17 @@ relif_engineer$ heroku pgbackups:url b001
 
 user@sandip:~/freeliancer/Ezra/relief-eng-staging$ heroku pgbackups:restore HEROKU_POSTGRESQL_WHITE "https://s3.amazonaws.com/hkpgbackups/app3396572@heroku.com/b005.dump?AWSAccessKeyId=AKIAIYZ2BP3RBVXEIZDA&Expires=1345086066&Signature=RGXNCa5GerfXmvBomw3qBC3mZjo%3D"
 
+Q how to see env variable
+A. heroku config
 
+Q. how to see 
+A. heroku ps
+
+Q.heroku set worker set
+A. heroku ps:scale web=1 worker=1
+
+Q Log file open
+A. heroku logs --tail
+
+Q.Total number of log file see
+A. heroku logs -n 1500

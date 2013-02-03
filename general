@@ -98,9 +98,17 @@ A. netstat -tulpn
 Q. how to file find 
 A. sudo find / -iname "*.fnm" #i is for case sensitive
 
+Q. Find Last modified file in 3 days
+A. find /etc -iname "*.cnf" -mtime 3
+
 Q. how to folder find 
 A. sudo find / -name solr -type d
 
 Q. How to delete hidden folder
 A. find -name "\.svn" -exec rm -rf {} \;
 
+Q. How to find getway
+A. route -n
+
+Q. How to run the test file
+A. bundle exec ruby -I "railties/test" actionpack/test/template/form_options_helper_test.rb

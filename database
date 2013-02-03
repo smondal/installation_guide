@@ -73,5 +73,8 @@ mysql> SHOW PROCEDURE STATUS;
 Q. how to connect database server in different host 
 A. mysql -u root -p --host=host_name
 
+Q. How do you create database from command prompt
+A. mysql -u roo -p -e "create dtabase testing" 
+
 
 
