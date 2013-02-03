@@ -112,3 +112,13 @@ A. route -n
 
 Q. How to run the test file
 A. bundle exec ruby -I "railties/test" actionpack/test/template/form_options_helper_test.rb
+
+Q. Number of file in folder
+A. find Media/ -type f | wc -l
+
+Q. How to see the procees use by application 
+A. ps -ef
+
+Q. Good tool for checking performance
+A. ruby-prof
+
