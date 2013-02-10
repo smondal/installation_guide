@@ -37,6 +37,9 @@ A. free -m
 Q. See cpu info
 A. cat /proc/cpuinfo
 
+Q. How to search gem from terminal to remote gem
+A. gem search -r "hello"
+
 Q. How to see the passenge status
 A.  passenger-status
 

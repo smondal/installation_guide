@@ -1,0 +1,50 @@
+Q. Step by Step PHPmYadmin install
+
+ 
+check mysql is install
+mysql -v
+
+check php is install
+php -v
+
+install php
+sudo yum install php
+
+uninstall apache
+sudo apt-get purge apache2.2-common
+
+install apache
+sudo apt-get install apache2 
+
+
+download phpmyadmin on /var/www
+cd /var/www
+wget http://www.sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/3.4.1/phpMyAdmin-3.4.1-all-languages.tar.bz2
+
+#extract
+tar -xvf phpMyAdmin-3.4.1-all-languages-tar.bz2 
+
+#move to phpmyadmin
+mv phpMyAdmin-3.4.1-all-languages phpmyadmin
+
+# copy sample file
+cp config.sample.inc.php config.inc.php
+
+#open config.inc.php
+cfg['Servers'][$i]['host'] = 'tcerprodb2.cakz06rkzza3.us-east-1.rds.amazonaws.com'
+$cfg['blowfish_secret'] = 'sandip';
+
+# setup phpmyadmin.conf file on /etc/httpd/config.d/phpmyadmin.conf
+Listen 8081
+<VirtualHost _default_:8081>
+        ServerName MyECF-Pacer-Service
+        DocumentRoot /var/www
+        ErrorLog "/mnt/data/logs/error.log"
+        <Directory /var/www/>
+               Options Indexes MultiViews
+               AllowOverride all
+               Allow from all
+        </Directory>
+</VirtualHost>
+
+

@@ -1,3 +1,13 @@
+Q.How to uninstall apache2 
+a. sudo apt-get purge apache2.2-common
+
+Q. download file showing when opening phpmyadmin
+A. sudo apt-get install libapache2-mod-php5
+
+Q. How to install apache2
+A. sudo apt-get install apache2
+
+
 rvmsudo passenger-install-nginx-module
 sudo apt-get install apache2-prefork-dev
 
