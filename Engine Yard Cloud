@@ -1,0 +1,74 @@
+Create a local SSH keypair
+$ ssh-keygen -t rsa 
+Generating public/private rsa key pair. 
+Enter file in which to save the key (/Users/tbird/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/tbird/.ssh/id_rsa. 
+Your public key has been saved in /Users/tbird/.ssh/id_rsa.pub. 
+The key fingerprint is: 
+c9:26:4a:1b:7d:35:9f:c3:c2:b0:b4:5a:7c:8c:65:d9 tbird@jupiter 
+The key's randomart image is: 
++--[ RSA 2048]----+ 
+|                 | 
+|           o     | 
+|        o * E    | 
+|     . + % + .   | 
+|    o o S = =    | 
+|   . + * . . .   | 
+|    o .          |
+|                 | 
+|                 |
++-----------------+ 
+
+Then copy the id_rsa.pub file and upload into Engine Yard cloud.
+
+To add an SSH key to Engine Yard Cloud
+
+    Locate and copy the public key on your local machine. The default location of this file is:
+    ~/.ssh/id_rsa.pub
+    In your Dashboard, click on the Tools drop-down.
+    Click SSH Public Keys.
+    Click Add a new SSH public key.
+    Enter a name for the key.
+    Paste the key (from Step 1) into the Public Key field.
+
+    Click Add Key.
+
+    You receive a confirmation that your SSH public key has been created and added to your Engine Yard account.
+
+Next step
+
+After a public key is uploaded your Engine Yard account, it needs to be associated with one or more environments. This ensures that instances contained within the environment have the SSH key installed and are accessible via an SSH client.
+
+The process to install an SSH key:
+
+    Update the environment
+    Deploy keys
+
+To update an environment with an SSH key
+
+    In your Dashboard, click the environment name.
+    For example, the “production” environment of the “MyApp” application.
+
+    On the Environment page, click Edit Environment.
+
+    Locate the SSH Keys section and select the keys you want to install.
+
+    Click Update Environment to save your changes.
+
+    (Optional) Repeat these steps for each environment you want to install a key on.
+
+To deploy keys
+
+After an environment has been updated with one or more new keys, the keys need to be deployed to the environment instances.
+
+    In your Dashboard, click the environment that you want to deploy your key(s) to.
+    Click Apply to install the keys.
+
+After the keys are deployed, you can connect to your instances via SSH.
+
+
+ssh deploy@123.123.123.123 
+
+Application are located in /data folder
