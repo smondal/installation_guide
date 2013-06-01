@@ -121,6 +121,10 @@ heroku login: sandip_mondal85@yahoo.co.in
 password: 
 
 
+ !     Push rejected, no Cedar-supported app detected
+==========================================================
+First check Gemfile, Is there any gem which is dependent on system then remove the file
+heroku create --stack cedar
 
 
 
