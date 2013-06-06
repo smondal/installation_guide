@@ -1,0 +1,8 @@
+# Building your gem
+gem build hello.gemspec
+
+#creating credential with ruby gems
+curl -u sandip85 https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials
+
+#Pushing gems into rubygems
+gem push Hello-0.0.0.gem

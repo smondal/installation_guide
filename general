@@ -1,6 +1,4 @@
 
-
-
 A
 set your user name, email and Github token
 git config --global user.name "Firstname Lastname"
@@ -128,4 +126,33 @@ A. ps -ef
 
 Q. Good tool for checking performance
 A. ruby-prof
+
+
+Q.	Generate rspec controller
+A.	rails g rspec:controller histories
+
+Q. How to run rspec
+A. rspec spec/controllers/groups_controller_spec.rb
+
+Q. How to run all spec controller
+A. rake spec:controllers RAILS_ENV=test
+
+Q How do you run all the controller spec
+A. bundle exec rake spec:controllers
+
+nohup ./bin/mongod --dbpath /opt/mongodb/data/db/ &
+
+Q. Like condition on mongomapper
+A. User.where("first_name" => /Sandip/).all
+
+Q. free domain register
+A. http://uni.me
+
+Q. How to reload terminal after file(here bashrc file change) change
+A. source ~/.bashrc
+
+Q. Amazon setup link
+A. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html
+ 
+
 

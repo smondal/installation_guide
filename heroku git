@@ -182,33 +182,6 @@ end
 
 
 
-
-
-
-
-Github push
-=============================================================
-sudo git install git-core
-ssh-keygen -t rsa -C "sandip_mondal85@yahoo.co.in"
-git config --global user.name
-git config --global user.email
-ssh-add
-rails new hello_world
-cd hello_world
-git init 
-git add .
-git commit -m "initial import" 
-create a repository
-git remote add origin git@github.com:smondal/installation_guide.git
-git pull git@github.com:smondal/installation_guide.git
-git push origin master
-
-
-#note remove origin
-git remote rm origin
-git rm Filename
-
-
 Nginx setup
 ===========================================================
 rvm gem install passenger

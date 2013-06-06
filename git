@@ -1,0 +1,60 @@
+Github push
+=============================================================
+sudo git install git-core
+ssh-keygen -t rsa -C "sandip_mondal85@yahoo.co.in"
+git config --global user.name
+git config --global user.email
+ssh-add
+rails new hello_world
+cd hello_world
+git init 
+git add .
+git commit -m "initial import" 
+create a repository
+git remote add origin git@github.com:smondal/installation_guide.git
+git pull git@github.com:smondal/installation_guide.git
+git push origin master
+
+
+#note remove origin
+git remote rm origin
+git rm Filename
+
+
+Q. git pull not working
+A git reset --hard feature/sso
+
+Q. How do you see list of branch
+A  git branch –a
+
+Q. pulling data from bitbucket
+A. git pull upstream develop-vp2
+
+Q. how to create a local branch
+A. git branch –a releases/2.01.00 (here 2.01.00 is the local_branch_name)
+    Git pull upstream releases/2.01.00 ( pulling data from remote branch)
+
+Q. How to delete a branch
+A. git branch –D  branch_name
+
+
+
+
+Q. If branch deletion creating problem.
+A  1. first do git reset –hard HEAD
+     2. git checkout  master
+     3. git branch -D upstream/release/2.01.00
+
+
+Q.If local branch pull conflict with other remote branch.
+A. 1. First remove local branch (git branch -D  release/2.01.00) here release/2.01.00 is the local branch.
+   2. then create local branch pulling data from remote ( git checkout -b  upstream/release/2.01.00) here upstream/release/2.01.00 is the remote branch
+   3. Then pull the data from remote branch (git pull  upstream release/2.01.00)
+
+git push amit HEAD:release/2.01.00
+
+Q.	How to remove branch from bitbucket
+A.	1. Git branch –D :upstream/release/2.01.00( here upstream/release/2.01.00 is the branch name)
+2. git push origin :upstream/release/2.01.00(here upstream/release/2.01.00 is the branch name)
+
+

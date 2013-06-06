@@ -1,0 +1,53 @@
+How to setup s3 with paperclip
+
+gem 'paperclip'
+gem 'aws-sdk'
+
+----------------------------------------------------------------------------
+If you are using heroku server the do the following things
+
+$ heroku config:set AWS_BUCKET=your_bucket_name
+$ heroku config:set AWS_ACCESS_KEY_ID=your_access_key_id
+$ heroku config:set AWS_SECRET_ACCESS_KEY=your_secret_access_key
+
+-----------------------------------------------------------------------------
+
+your model video.rb file look like this.
+
+class Video < ActiveRecord::Base
+  attr_accessible :source, :video_type_id,:title 
+  has_attached_file :source,
+  :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+  :url => "/system/:attachment/:id/:style/:filename",
+  :storage => :s3,
+  :s3_permissions => :public_read,
+  :s3_protocol => "http",
+  :s3_credentials => "#{Rails.root}/config/s3.yml"
+
+  # :s3_credentials => {:bucket => ENV['bucket name'],
+  # :access_key_id => ENV['key_id'],
+  # :secret_access_key => ENV['access_key']}
+
+---------------------------------------------------------------------------------- 
+Add s3.yml in your config file.
+production:
+  access_key_id: AKIAJHFJC43NJO4H7U6A
+  secret_access_key: BTrvTOQ27oENb452+h+U+hHeEbjS8YeAV1mxixdF
+  bucket: koresol
+
+development:
+  access_key_id: AKIAJHFJC43NJO4H7U6A
+  secret_access_key: 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
+  bucket: koresol
+
+
+--------------------------------------------------------------------------------------
+Then login to amazon s3 server and go to console page
+
+1 .https://console.aws.amazon.com/s3/home?region=us-west-2
+2. Create one bucket
+3. Then click on user name on to of this page.
+4. click on "security credential" link
+5. Click on "access keys" 
+6. create new root key. 
+It will generate "secret key" and "access key"
